@@ -221,7 +221,7 @@ func main() {
 			TrainingType: "Плавание",
 			Action:       2000,
 			LenStep:      SwimmingLenStep,
-			Duration:     90 * time.Minute,
+			Duration:     0 * time.Minute,
 			Weight:       85,
 		},
 		LengthPool: 50,
@@ -238,7 +238,7 @@ func main() {
 			Duration:     3*time.Hour + 45*time.Minute,
 			Weight:       85,
 		},
-		Height: 185,
+		Height: 0,
 	}
 
 	fmt.Println(ReadData(walking))
