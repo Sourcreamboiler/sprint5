@@ -143,7 +143,7 @@ func (w Walking) Calories() float64 {
 		fmt.Println("Некорректное значение роста")
 		return 0
 	}
-	calsWalking := ((CaloriesWeightMultiplier*w.Training.Weight + (math.Pow(w.Training.meanSpeed()*KmHInMsec, 2)/(w.Height*CmInM))*CaloriesMeanSpeedMultiplier*w.Training.Weight) * float64(w.Training.Duration) * MinInHours)
+	calsWalking := ((CaloriesWeightMultiplier*w.Training.Weight + (math.Pow(w.Training.meanSpeed()*KmHInMsec, 2)/(w.Height/CmInM))*CaloriesMeanSpeedMultiplier*w.Training.Weight) * float64(w.Training.Duration) * MinInHours)
 	return calsWalking
 }
 
@@ -221,7 +221,7 @@ func main() {
 			TrainingType: "Плавание",
 			Action:       2000,
 			LenStep:      SwimmingLenStep,
-			Duration:     0 * time.Minute,
+			Duration:     90 * time.Minute,
 			Weight:       85,
 		},
 		LengthPool: 50,
@@ -238,7 +238,7 @@ func main() {
 			Duration:     3*time.Hour + 45*time.Minute,
 			Weight:       85,
 		},
-		Height: 0,
+		Height: 185,
 	}
 
 	fmt.Println(ReadData(walking))
