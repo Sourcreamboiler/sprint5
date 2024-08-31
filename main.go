@@ -107,7 +107,7 @@ type Running struct {
 // Это переопределенный метод Calories() из Training.
 func (r Running) Calories() float64 {
 	// вставьте ваш код ниже
-	calsRunning := ((CaloriesMeanSpeedMultiplier*r.Training.meanSpeed() + CaloriesMeanSpeedShift) * r.Training.Weight / MInKm * float64(r.Training.Duration) * MinInHours)
+	calsRunning := ((CaloriesMeanSpeedMultiplier*r.Training.meanSpeed() + CaloriesMeanSpeedShift) * r.Training.Weight / MInKm * float64(r.Training.Duration.Hours()) * MinInHours)
 	return calsRunning
 }
 
@@ -143,7 +143,7 @@ func (w Walking) Calories() float64 {
 		fmt.Println("Некорректное значение роста")
 		return 0
 	}
-	calsWalking := ((CaloriesWeightMultiplier*w.Training.Weight + (math.Pow(w.Training.meanSpeed()*KmHInMsec, 2)/(w.Height/CmInM))*CaloriesMeanSpeedMultiplier*w.Training.Weight) * float64(w.Training.Duration) * MinInHours)
+	calsWalking := ((CaloriesWeightMultiplier*w.Training.Weight + (math.Pow(w.Training.meanSpeed()*KmHInMsec, 2)/(w.Height*CmInM))*CaloriesMeanSpeedMultiplier*w.Training.Weight) * float64(w.Training.Duration.Hours()) * MinInHours)
 	return calsWalking
 }
 
@@ -189,7 +189,7 @@ func (s Swimming) meanSpeed() float64 {
 // Это переопределенный метод Calories() из Training.
 func (s Swimming) Calories() float64 {
 	// вставьте ваш код ниже
-	calsSwimming := (s.meanSpeed() + SwimmingCaloriesMeanSpeedShift) * SwimmingCaloriesWeightMultiplier * s.Training.Weight * float64(s.Training.Duration)
+	calsSwimming := (s.meanSpeed() + SwimmingCaloriesMeanSpeedShift) * SwimmingCaloriesWeightMultiplier * s.Training.Weight * float64(s.Training.Duration.Hours())
 	return calsSwimming
 }
 
